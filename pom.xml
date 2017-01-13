@@ -25,5 +25,11 @@
       <version>1.0-SNAPSHOT</version>
       <type>jar</type>
     </dependency>
+    <dependency>
+      <groupId>StatsApp</groupId>
+      <artifactId>StatsServices</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <type>jar</type>
+    </dependency>
   </dependencies>
 </project>
