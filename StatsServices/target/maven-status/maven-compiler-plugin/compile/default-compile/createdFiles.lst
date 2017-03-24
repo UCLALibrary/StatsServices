@@ -1,0 +1,9 @@
+edu\ucla\library\libservices\pubstats\db\source\DataSourceFactory.class
+edu\ucla\library\libservices\pubstats\generators\ModeGenerator.class
+edu\ucla\library\libservices\pubstats\db\mappers\ModeMapper.class
+edu\ucla\library\libservices\pubstats\db\mappers\QuestionMapper.class
+edu\ucla\library\libservices\pubstats\beans\UnitPoint.class
+edu\ucla\library\libservices\pubstats\db\mappers\PointMapper.class
+edu\ucla\library\libservices\pubstats\beans\InteractionMode.class
+edu\ucla\library\libservices\pubstats\beans\QuestionType.class
+edu\ucla\library\libservices\pubstats\generators\TypeGenerator.class

@@ -1,0 +1,9 @@
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\generators\TypeGenerator.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\beans\QuestionType.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\generators\ModeGenerator.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\mappers\ModeMapper.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\mappers\PointMapper.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\mappers\QuestionMapper.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\source\DataSourceFactory.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\beans\UnitPoint.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\beans\InteractionMode.java
