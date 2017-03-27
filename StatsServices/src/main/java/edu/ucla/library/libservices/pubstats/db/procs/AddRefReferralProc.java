@@ -1,10 +1,12 @@
 package edu.ucla.library.libservices.pubstats.db.procs;
 
-import edu.ucla.library.libservices.pubstats.beans.StatsLine;
+import edu.ucla.library.libservices.pubstats.beans.Submission;
 import edu.ucla.library.libservices.pubstats.db.source.DataSourceFactory;
+import edu.ucla.library.libservices.pubstats.util.DateExtractor;
 
 import java.sql.Types;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,26 +16,24 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.object.StoredProcedure;
 
-public class AddRefStatProc
+public class AddRefReferralProc
   extends StoredProcedure
 {
-  private static final int INPUT_METHOD = 2;
-  
   private DataSource ds;
   private String dbName;
-  private StatsLine data;
-
-  public AddRefStatProc( JdbcTemplate jdbcTemplate, String string )
+  private Submission data;
+  
+  public AddRefReferralProc( JdbcTemplate jdbcTemplate, String string )
   {
     super( jdbcTemplate, string );
   }
 
-  public AddRefStatProc( DataSource dataSource, String string )
+  public AddRefReferralProc( DataSource dataSource, String string )
   {
     super( dataSource, string );
   }
 
-  public AddRefStatProc()
+  public AddRefReferralProc()
   {
     super();
   }
@@ -48,12 +48,12 @@ public class AddRefStatProc
     return dbName;
   }
 
-  public void setData( StatsLine data )
+  public void setData( Submission data )
   {
     this.data = data;
   }
 
-  private StatsLine getData()
+  private Submission getData()
   {
     return data;
   }
@@ -77,15 +77,12 @@ public class AddRefStatProc
   {
     setDataSource( ds );
     setFunction( false );
-    setSql( "uspAddRefStat" );
-    declareParameter( new SqlParameter( "@AggregateID", Types.VARCHAR ) );
-    declareParameter( new SqlParameter( "@Count", Types.INTEGER ) ); //int
+    setSql( "uspAddRefReferral" );
     declareParameter( new SqlParameter( "@dataMonth", Types.INTEGER ) ); //int
     declareParameter( new SqlParameter( "@dataYear", Types.INTEGER ) ); //int
     declareParameter( new SqlParameter( "@DateTime", Types.TIMESTAMP ) ); //timestamp
     declareParameter( new SqlParameter( "@LogonID", Types.VARCHAR ) );
-    declareParameter( new SqlParameter( "@InputMethod", Types.VARCHAR ) );
-    declareParameter( new SqlParameter( "@TimeSpent", Types.FLOAT ) ); //float
+    declareParameter( new SqlParameter( "@ReferralText", Types.VARCHAR ) );
     compile();
   }
 
@@ -97,14 +94,11 @@ public class AddRefStatProc
     out = null;
     input = new HashMap();
 
-    input.put( "@AggregateID", getData().getAggregateID() );
-    input.put( "@Count", getData().getCount() );
-    input.put( "@dataMonth", getData().getDataMonth() );
-    input.put( "@dataYear", getData().getDataYear() );
+    input.put( "@dataMonth", DateExtractor.getCalendarPart( getData().getDateTime(), Calendar.MONTH ) );
+    input.put( "@dataYear", DateExtractor.getCalendarPart( getData().getDateTime(), Calendar.YEAR ) );
     input.put( "@DateTime", getData().getDateTime() );
-    input.put( "@LogonID", getData().getLogonID() );
-    input.put( "@InputMethod", INPUT_METHOD );
-    input.put( "@TimeSpent", getData().getTimeSpent() );
+    input.put( "@LogonID", getData().getOperator() );
+    input.put( "@ReferralText", getData().getReferral().getText() );
 
     out = execute( input );
 
