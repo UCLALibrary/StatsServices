@@ -64,13 +64,15 @@ public class AddRefStatProc
     ds = DataSourceFactory.getStatsConnection();
   }
 
-  public void addStat()
+  public Map addStat()
   {
     Map results;
 
     makeConnection();
     prepProc();
     results = execute();
+    
+    return results;
   }
 
   private void prepProc()

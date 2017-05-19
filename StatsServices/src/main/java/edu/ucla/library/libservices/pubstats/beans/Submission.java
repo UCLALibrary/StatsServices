@@ -23,6 +23,8 @@ public class Submission
   private String operator;
   @XmlElement(name = "timeSpent")
   private double timeSpent;
+  @XmlElement(name = "detailed")
+  private boolean detailed;
   @XmlElement(name = "stats")
   private List<BaseStat> stats;
   @XmlElement(name = "referral", required = false )
@@ -113,5 +115,15 @@ public class Submission
   public Interaction getInteraction()
   {
     return interaction;
+  }
+
+  public void setDetailed( boolean detailed )
+  {
+    this.detailed = detailed;
+  }
+
+  public boolean isDetailed()
+  {
+    return detailed;
   }
 }

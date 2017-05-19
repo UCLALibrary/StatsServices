@@ -7,7 +7,7 @@
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
     <init-param>
       <param-name>jersey.config.server.provider.packages</param-name>
-      <param-value>io.swagger.jaxrs.listing,edu.ucla.library.libservices.music.services</param-value>
+      <param-value>io.swagger.jaxrs.listing,edu.ucla.library.libservices.pubstats.web.service</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
@@ -33,4 +33,14 @@
     <servlet-name>Jersey Web Application</servlet-name>
     <url-pattern>/*</url-pattern>
   </servlet-mapping>
+  <context-param>
+    <param-name>datasource.stats</param-name>
+    <param-value>jdbc/statsDS</param-value>
+  </context-param>
+  <resource-ref>
+    <description>DB Connection</description>
+    <res-ref-name>jdbc/statsDS</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
 </web-app>

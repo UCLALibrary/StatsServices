@@ -1,14 +1,18 @@
 package edu.ucla.library.libservices.pubstats.beans;
 
-import java.util.List;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
+@XmlAccessorType( XmlAccessType.FIELD )
 public class UnitPoint
 {
+  @XmlElement(name = "unitPointID")
   private String unitPointID;
+  @XmlElement(name = "unitName")
   private String unitName;
+  @XmlElement(name = "servicePoint")
   private String servicePoint;
-  private List<InteractionMode> modes;
-  private List<QuestionType> types;
 
   public void setUnitPointID( String unitPointID )
   {
@@ -38,26 +42,6 @@ public class UnitPoint
   public String getServicePoint()
   {
     return servicePoint;
-  }
-
-  public void setModes( List<InteractionMode> modes )
-  {
-    this.modes = modes;
-  }
-
-  public List<InteractionMode> getModes()
-  {
-    return modes;
-  }
-
-  public void setTypes( List<QuestionType> types )
-  {
-    this.types = types;
-  }
-
-  public List<QuestionType> getTypes()
-  {
-    return types;
   }
 
   public UnitPoint()

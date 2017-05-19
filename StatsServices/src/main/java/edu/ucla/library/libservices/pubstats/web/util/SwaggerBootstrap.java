@@ -22,10 +22,12 @@ public class SwaggerBootstrap
 
     BeanConfig beanConfig = new BeanConfig();
     beanConfig.setVersion( "1.0.0" );
+    //beanConfig.set
     beanConfig.setSchemes( new String[] { "https" } );
+    //beanConfig.setBasePath( arg0 );
     beanConfig.setHost( "webservices-test.library.ucla.edu" );
     beanConfig.setBasePath( "/pss" );
-    beanConfig.setResourcePackage( "edu.ucla.library.libservices.pubstats.beans,edu.ucla.library.libservices.pubstats.generators" );
+    beanConfig.setResourcePackage( "edu.ucla.library.libservices.pubstats.web.service" ); //edu.ucla.library.libservices.pubstats.beans.*,
     beanConfig.setScan( true );
   }
 }
