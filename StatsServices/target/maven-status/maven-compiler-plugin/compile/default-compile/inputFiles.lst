@@ -25,5 +25,6 @@ H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pu
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\handlers\SubmissionHandler.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\procs\AddRefStatProc.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\util\DateExtractor.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\util\DateAdapter.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\generators\UnitPointGenerator.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\mappers\UnitPointMapper.java

@@ -22,7 +22,7 @@ public class DataSourceFactory
     ds.setDriverClassName( "net.sourceforge.jtds.jdbc.Driver" );
     ds.setUrl( "jdbc:jtds:sqlserver://db-pubservstats.library.ucla.edu:1433/PSS_Test" );
     ds.setUsername( "Pub_Stats_Report" );
-    ds.setPassword( "not our password" );
+    ds.setPassword( "PubStatsRep_pwd" );
     
     return ds;
   }

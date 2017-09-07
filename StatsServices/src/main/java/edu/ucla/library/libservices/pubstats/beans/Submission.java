@@ -1,13 +1,17 @@
 package edu.ucla.library.libservices.pubstats.beans;
 
+import edu.ucla.library.libservices.pubstats.util.DateAdapter;
+
+//import java.time.LocalDateTime;
+
 import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @XmlAccessorType( XmlAccessType.FIELD )
 @XmlRootElement( name = "Submission" )
@@ -18,6 +22,7 @@ public class Submission
   @XmlElement(name = "pointID")
   private String pointID;
   @XmlElement(name = "dateTime")
+  @XmlJavaTypeAdapter( DateAdapter.class )
   private Date dateTime;
   @XmlElement(name = "operator")
   private String operator;

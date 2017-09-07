@@ -1,5 +1,6 @@
 package edu.ucla.library.libservices.pubstats.util;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -15,6 +16,6 @@ public class DateExtractor
     GregorianCalendar converter;
     converter = new GregorianCalendar();
     converter.setTime( source );
-    return converter.get( part );
+    return ( part == Calendar.MONTH ? converter.get( part ) + 1 : converter.get( part ) );
   }
 }

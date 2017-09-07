@@ -21,6 +21,7 @@ edu\ucla\library\libservices\pubstats\db\procs\AddRefInteractionsProc.class
 edu\ucla\library\libservices\pubstats\generators\TypeGenerator.class
 edu\ucla\library\libservices\pubstats\db\mappers\QuestionMapper.class
 edu\ucla\library\libservices\pubstats\beans\Submission.class
+edu\ucla\library\libservices\pubstats\util\DateAdapter.class
 edu\ucla\library\libservices\pubstats\beans\Unit.class
 edu\ucla\library\libservices\pubstats\db\procs\AddRefStatProc.class
 edu\ucla\library\libservices\pubstats\db\procs\AddRefReferralProc.class

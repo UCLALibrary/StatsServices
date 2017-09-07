@@ -1,9 +1,8 @@
-    package edu.ucla.library.libservices.pubstats.handlers;
+package edu.ucla.library.libservices.pubstats.handlers;
 
 import edu.ucla.library.libservices.pubstats.beans.BaseStat;
 import edu.ucla.library.libservices.pubstats.beans.StatsLine;
 import edu.ucla.library.libservices.pubstats.beans.Submission;
-
 import edu.ucla.library.libservices.pubstats.db.procs.AddRefInteractionsProc;
 import edu.ucla.library.libservices.pubstats.db.procs.AddRefReferralProc;
 import edu.ucla.library.libservices.pubstats.db.procs.AddRefStatInteractionProc;
@@ -16,10 +15,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 public class SubmissionHandler
 {
   private static final List<String> TRANSACTION_TYPES =
     new ArrayList<String>( Arrays.asList( new String[] { "02", "03", "04", "05", "06", "08", "00" } ) );
+  final static Logger logger = Logger.getLogger( SubmissionHandler.class );
 
   private List<String> statsIDs;
   private String dbName;
@@ -56,26 +58,50 @@ public class SubmissionHandler
 
     isTransaction = false;
     statsIDs = new ArrayList<String>();
-
-    for ( BaseStat theStat : getSubmission().getStats() )
+    
+    logger.info( "in submitStats" );
+    
+    try
     {
-      StatsLine inputLine;
+      logger.info( "stat value: " + getSubmission().getOperator() );
+      logger.info( "stat value: " + getSubmission().getPointID() );
+      logger.info( "stat value: " + getSubmission().getUnitID() );
+      logger.info( "stat value: " + getSubmission().getDateTime() );
+      logger.info( "stat value: " + getSubmission().getTimeSpent() );
+      logger.info( "stat value: " + getSubmission().isDetailed() );
 
-      if ( TRANSACTION_TYPES.contains( theStat.getTypeID() ) )
-        isTransaction = true;
+      for ( BaseStat theStat : getSubmission().getStats() )
+      {
+        StatsLine inputLine;
 
-      inputLine = StatsLineBuilder.buildLine( getSubmission(), theStat );
+        logger.info( "building stats line with mode " + theStat.getModeID() );
 
-      submitLine( inputLine, true );
+        logger.info( "checking if transaction for type " + theStat.getTypeID() );
+        if ( TRANSACTION_TYPES.contains( theStat.getTypeID() ) )
+        {
+          logger.info( "this is a transaction" );
+          isTransaction = true;
+        }
+
+        inputLine = StatsLineBuilder.buildLine( getSubmission(), theStat );
+
+        submitLine( inputLine, true );
+      }
     }
-    if ( isTransaction )
+    catch (Exception e)
+    {
+      logger.fatal( "in submitStats, fatal error: " + e.getMessage() );
+      throw e;
+    }
+    /*if ( isTransaction )
       submitTransaction( getSubmission().getStats().get( 0 ) );
-    
-    if ( getSubmission().getReferral().getText() != null && getSubmission().getReferral().getText().trim().length() > 0 )
+
+    if ( getSubmission().getReferral().getText() != null &&
+         getSubmission().getReferral().getText().trim().length() > 0 )
       submitReferral();
-    
+
     if ( getSubmission().isDetailed() )
-      submitInteraction();
+      submitInteraction();*/
   }
 
   private void submitLine( StatsLine input, boolean saveID )
@@ -87,11 +113,22 @@ public class SubmissionHandler
     proc.setData( input );
     proc.setDbName( getDbName() );
 
-    results = proc.addStat();
+    logger.info( "in submitLine; AggregateID = " + input.getAggregateID() );
 
-    if ( saveID )
-      for ( Object key : results.keySet() )
-        statsIDs.add( results.get( key ).toString() );
+    try
+    {
+      results = proc.addStat();
+
+      if ( saveID )
+        for ( Object key : results.keySet() )
+          statsIDs.add( results.get( key ).toString() );
+    }
+    catch ( Exception e )
+    {
+      logger.fatal( "error submitting stats line: " + e.getMessage() );
+      throw e;
+    }
+
   }
 
   private void submitTransaction( BaseStat theStat )
@@ -104,7 +141,7 @@ public class SubmissionHandler
     transaction.setCount( 1 );
     submitLine( transaction, false );
   }
-  
+
   private void submitReferral()
   {
     AddRefReferralProc proc;
@@ -115,16 +152,24 @@ public class SubmissionHandler
     proc.setData( getSubmission() );
     proc.setDbName( getDbName() );
 
-    results = proc.addStat();
+    try
+    {
+      results = proc.addStat();
 
-    refIDs = new ArrayList<String>();
-    for ( Object key : results.keySet() )
-      refIDs.add( results.get( key ).toString() );
-    
-    linkRefStat(refIDs);
+      refIDs = new ArrayList<String>();
+      for ( Object key : results.keySet() )
+        refIDs.add( results.get( key ).toString() );
+
+      linkRefStat( refIDs );
+    }
+    catch ( Exception e )
+    {
+      logger.fatal( "error submitting referral line: " + e.getMessage() );
+      throw e;
+    }
   }
-  
-  private void linkRefStat(List<String> referrals)
+
+  private void linkRefStat( List<String> referrals )
   {
     AddRefStatReferralProc proc;
 
@@ -137,12 +182,20 @@ public class SubmissionHandler
       {
         proc.setReferralID( Integer.parseInt( refID ) );
         proc.setStatID( Integer.parseInt( statID ) );
-        
-        proc.addStat();
+
+        try
+        {
+          proc.addStat();
+        }
+        catch ( Exception e )
+        {
+          logger.fatal( "error submitting referral link: " + e.getMessage() );
+          throw e;
+        }
       }
     }
   }
-  
+
   private void submitInteraction()
   {
     AddRefInteractionsProc proc;
@@ -153,16 +206,24 @@ public class SubmissionHandler
     proc.setData( getSubmission() );
     proc.setDbName( getDbName() );
 
-    results = proc.addStat();
+    try
+    {
+      results = proc.addStat();
 
-    interactIDs = new ArrayList<String>();
-    for ( Object key : results.keySet() )
-      interactIDs.add( results.get( key ).toString() );
-    
-    linkIntStat(interactIDs);
+      interactIDs = new ArrayList<String>();
+      for ( Object key : results.keySet() )
+        interactIDs.add( results.get( key ).toString() );
+
+      linkIntStat( interactIDs );
+    }
+    catch ( Exception e )
+    {
+      logger.fatal( "error submitting interaction: " + e.getMessage() );
+      throw e;
+    }
   }
-  
-  private void linkIntStat(List<String> interactions)
+
+  private void linkIntStat( List<String> interactions )
   {
     AddRefStatInteractionProc proc;
 
@@ -175,8 +236,16 @@ public class SubmissionHandler
       {
         proc.setInteractionID( Integer.parseInt( intID ) );
         proc.setStatID( Integer.parseInt( statID ) );
-        
-        proc.addStat();
+
+        try
+        {
+          proc.addStat();
+        }
+        catch ( Exception e )
+        {
+          logger.fatal( "error submitting interaction link: " + e.getMessage() );
+          throw e;
+        }
       }
     }
   }

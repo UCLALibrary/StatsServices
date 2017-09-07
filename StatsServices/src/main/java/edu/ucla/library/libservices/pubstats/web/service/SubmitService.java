@@ -29,7 +29,7 @@ public class SubmitService
   }
 
   @PUT
-  @Consumes( "application/json" )
+  @Consumes( "application/json,application/xml,text/xml" )
   @Path( "submit" )
   @ApiOperation(value = "Submits statistics to db",
     notes = "Consumes a Submission object")
