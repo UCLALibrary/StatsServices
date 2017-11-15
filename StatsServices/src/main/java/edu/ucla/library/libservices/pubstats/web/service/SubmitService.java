@@ -49,6 +49,7 @@ public class SubmitService
     }
     catch ( Exception e )
     {
+      e.printStackTrace();
       return Response.serverError().entity( "Stats insertion failed: " + e.getMessage() ).build();
     }
   }

@@ -1,5 +1,6 @@
 package edu.ucla.library.libservices.pubstats.web.service;
 
+import edu.ucla.library.libservices.pubstats.generators.DepartmentGenerator;
 import edu.ucla.library.libservices.pubstats.generators.UnitPointGenerator;
 
 import io.swagger.annotations.Api;
@@ -14,6 +15,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import edu.ucla.library.libservices.pubstats.beans.Record;
+import edu.ucla.library.libservices.pubstats.generators.RecordGenerator;
 
 @Api(value = "/lookup", description = "Lookup operations on db")
 @Path( "/lookup" )
@@ -59,5 +62,39 @@ public class LookupService
     }
 
     return Response.ok( docMaker ).build();
+  }
+
+  @GET
+  @Produces( "application/json" )
+  @Path( "/departments" )
+  @ApiOperation(value = "Finds UCLA departments/units",
+    response = DepartmentGenerator.class,
+    responseContainer = "List")
+  public Response getDepartments()
+  {
+    DepartmentGenerator docMaker;
+
+    docMaker = new DepartmentGenerator();
+    docMaker.setDbName( config.getServletContext().getInitParameter( "datasource.stats" ) );
+    
+    docMaker.populateDepartments();
+
+    return Response.ok( docMaker ).build();
+  }
+
+  @GET
+  @Produces( "application/json" )
+  @Path( "/latest" )
+  @ApiOperation(value = "Finds latest stats record",
+    response = Record.class,
+    responseContainer = "Object")
+  public Response getRecord()
+  {
+    RecordGenerator docMaker;
+
+    docMaker = new RecordGenerator();
+    docMaker.setDbName( config.getServletContext().getInitParameter( "datasource.stats" ) );
+    
+    return Response.ok( docMaker.getTheRecord() ).build();
   }
 }

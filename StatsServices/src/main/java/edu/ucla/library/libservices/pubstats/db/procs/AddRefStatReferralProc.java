@@ -85,7 +85,7 @@ public class AddRefStatReferralProc
   {
     setDataSource( ds );
     setFunction( false );
-    setSql( "uspAddRefStatReferral" );
+    setSql( "PSS_Test.dbo.uspAddRefStatReferral" );
     declareParameter( new SqlParameter( "@RefStatID", Types.INTEGER ) ); //int
     declareParameter( new SqlParameter( "@RefReferralID", Types.INTEGER ) ); //int
     compile();

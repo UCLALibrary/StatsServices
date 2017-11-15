@@ -1,17 +1,34 @@
 package edu.ucla.library.libservices.pubstats.tests;
 
+import edu.ucla.library.libservices.pubstats.beans.BaseStat;
+import edu.ucla.library.libservices.pubstats.beans.Department;
+import edu.ucla.library.libservices.pubstats.beans.Interaction;
 import edu.ucla.library.libservices.pubstats.beans.Referral;
 import edu.ucla.library.libservices.pubstats.beans.StatsLine;
 import edu.ucla.library.libservices.pubstats.beans.Submission;
+import edu.ucla.library.libservices.pubstats.db.procs.AddRefInteractionsProc;
 import edu.ucla.library.libservices.pubstats.db.procs.AddRefReferralProc;
 import edu.ucla.library.libservices.pubstats.db.procs.AddRefStatProc;
+
+import edu.ucla.library.libservices.pubstats.generators.DepartmentGenerator;
 
 import java.time.LocalDateTime;
 
 //import java.util.Date;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import edu.ucla.library.libservices.pubstats.beans.Interaction;
+import edu.ucla.library.libservices.pubstats.beans.Record;
+import edu.ucla.library.libservices.pubstats.generators.RecordGenerator;
+
+import edu.ucla.library.libservices.pubstats.handlers.SubmissionHandler;
+
+import java.util.ArrayList;
+
+import javax.ws.rs.core.Response;
 
 public class Tester
 {
@@ -22,42 +39,66 @@ public class Tester
 
   public static void main( String[] args )
   {
-    AddRefStatProc statProc;
-    AddRefReferralProc refProc;
-    Map results;
+    Interaction interaction;
+    List<BaseStat> stats;
     Referral referral;
-    Set keys;
-    StatsLine line;
     Submission submit;
-    
-    line = new StatsLine();
-    line.setAggregateID( "SRL00020203" );
-    line.setCount( 1 );
-    line.setDataMonth( 7 );
-    line.setDataYear( 2017 );
-    line.setDateTime( new Date() );
-    line.setLogonID( "drickard1967" );
-    line.setTimeSpent( 20.0D );
-    
-    referral = new Referral();
-    referral.setText( "this is a referral note" );
+    SubmissionHandler handler;
+
     submit = new Submission();
     submit.setDateTime( new Date() );
+    submit.setDetailed( true );
     submit.setOperator( "drickard1967" );
+    submit.setPatronCount( 1 );
+    submit.setTimeSpent( 15D );
+    submit.setUnitPointID( "ART0001" );
+
+    stats = new ArrayList<BaseStat>( 3 );
+    stats.add( addStat( "01", "01", 1 ) );
+    stats.add( addStat( "01", "02", 2 ) );
+    stats.add( addStat( "01", "03", 3 ) );
+    
+    submit.setStats( stats );
+    
+    referral = new Referral();
+    referral.setText( "testing submission" );
+    
     submit.setReferral( referral );
     
-    statProc = new AddRefStatProc();
-    statProc.setData( line );
-    statProc.setDbName( "dbName" );
-
-    results = statProc.addStat();
-    keys = results.keySet();
-    for ( Object key : results.keySet() )
-      System.out.println( "return = " + results.get( key ) );
+    interaction = new Interaction();
+    interaction.setCourse( "Math 305" );
+    interaction.setDepartmentID( 35 );
+    interaction.setPatronFeedback( "party on wayne" );
+    interaction.setPatronType( 1 );
+    interaction.setStaffFeedback( "de nada" );
+    interaction.setTopic( "linear differential equations" );
     
-    refProc = new AddRefReferralProc();
-    refProc.setData( submit );
-    refProc.setDbName( "dbName" );
-    refProc.addStat();
+    submit.setInteraction( interaction );
+
+
+    handler = new SubmissionHandler();
+    handler.setDbName( "dbname" );
+    handler.setSubmission( submit );
+    
+    try
+    {
+      handler.submitStats();
+    }
+    catch ( Exception e )
+    {
+      e.printStackTrace();
+    }
+  }
+
+  private static BaseStat addStat( String type, String mode, int count )
+  {
+    BaseStat stat;
+
+    stat = new BaseStat();
+    stat.setCount( count );
+    stat.setModeID( mode );
+    stat.setTypeID( type );
+
+    return stat;
   }
 }

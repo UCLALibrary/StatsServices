@@ -4,9 +4,12 @@ edu\ucla\library\libservices\pubstats\web\util\SwaggerBootstrap.class
 edu\ucla\library\libservices\pubstats\db\mappers\UnitPointMapper.class
 edu\ucla\library\libservices\pubstats\db\source\DataSourceFactory.class
 edu\ucla\library\libservices\pubstats\db\mappers\ModeMapper.class
+edu\ucla\library\libservices\pubstats\generators\RecordGenerator.class
 edu\ucla\library\libservices\pubstats\web\service\LookupService.class
+edu\ucla\library\libservices\pubstats\beans\Record.class
 edu\ucla\library\libservices\pubstats\util\StatsLineBuilder.class
 edu\ucla\library\libservices\pubstats\generators\ModeGenerator.class
+edu\ucla\library\libservices\pubstats\beans\Department.class
 edu\ucla\library\libservices\pubstats\generators\UnitPointGenerator.class
 edu\ucla\library\libservices\pubstats\beans\UnitPoint.class
 edu\ucla\library\libservices\pubstats\db\mappers\UnitMapper.class
@@ -16,10 +19,12 @@ edu\ucla\library\libservices\pubstats\beans\BaseStat.class
 edu\ucla\library\libservices\pubstats\beans\InteractionMode.class
 edu\ucla\library\libservices\pubstats\tests\Tester.class
 edu\ucla\library\libservices\pubstats\beans\QuestionType.class
+edu\ucla\library\libservices\pubstats\generators\DepartmentGenerator.class
 edu\ucla\library\libservices\pubstats\db\procs\AddRefStatInteractionProc.class
 edu\ucla\library\libservices\pubstats\db\procs\AddRefInteractionsProc.class
 edu\ucla\library\libservices\pubstats\generators\TypeGenerator.class
 edu\ucla\library\libservices\pubstats\db\mappers\QuestionMapper.class
+edu\ucla\library\libservices\pubstats\db\mappers\RecordMapper.class
 edu\ucla\library\libservices\pubstats\beans\Submission.class
 edu\ucla\library\libservices\pubstats\util\DateAdapter.class
 edu\ucla\library\libservices\pubstats\beans\Unit.class
@@ -27,4 +32,5 @@ edu\ucla\library\libservices\pubstats\db\procs\AddRefStatProc.class
 edu\ucla\library\libservices\pubstats\db\procs\AddRefReferralProc.class
 edu\ucla\library\libservices\pubstats\db\procs\AddRefStatReferralProc.class
 edu\ucla\library\libservices\pubstats\beans\Interaction.class
+edu\ucla\library\libservices\pubstats\db\mappers\DepartmentMapper.class
 edu\ucla\library\libservices\pubstats\web\service\SubmitService.class

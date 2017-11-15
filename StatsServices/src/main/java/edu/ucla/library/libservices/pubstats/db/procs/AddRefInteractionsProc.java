@@ -79,7 +79,7 @@ public class AddRefInteractionsProc
   {
     setDataSource( ds );
     setFunction( false );
-    setSql( "uspAddRefInteractions" );
+    setSql( "PSS_Test.dbo.uspAddRefInteractions" );
     declareParameter( new SqlParameter( "@dataMonth", Types.INTEGER ) );
     declareParameter( new SqlParameter( "@dataYear", Types.INTEGER ) ); 
     declareParameter( new SqlParameter( "@DateTime", Types.TIMESTAMP ) );

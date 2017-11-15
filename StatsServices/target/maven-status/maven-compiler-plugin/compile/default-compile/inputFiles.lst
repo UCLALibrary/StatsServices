@@ -1,5 +1,6 @@
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\web\util\SwaggerBootstrap.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\beans\StatsLine.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\beans\Record.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\mappers\ModeMapper.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\mappers\QuestionMapper.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\procs\AddRefStatInteractionProc.java
@@ -14,15 +15,20 @@ H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pu
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\beans\BaseStat.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\procs\AddRefInteractionsProc.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\source\DataSourceFactory.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\mappers\RecordMapper.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\mappers\UnitMapper.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\beans\InteractionMode.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\generators\RecordGenerator.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\beans\QuestionType.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\beans\Unit.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\web\service\LookupService.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\beans\Department.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\beans\UnitPoint.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\beans\Referral.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\generators\TypeGenerator.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\handlers\SubmissionHandler.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\generators\DepartmentGenerator.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\mappers\DepartmentMapper.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\procs\AddRefStatProc.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\util\DateExtractor.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\util\DateAdapter.java

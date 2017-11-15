@@ -85,7 +85,7 @@ public class AddRefStatInteractionProc
   {
     setDataSource( ds );
     setFunction( false );
-    setSql( "uspAddRefStatInteraction" );
+    setSql( "PSS_Test.dbo.uspAddRefStatInteraction" );
     declareParameter( new SqlParameter( "@RefStatID", Types.INTEGER ) ); //int
     declareParameter( new SqlParameter( "@RefInteractionID", Types.INTEGER ) ); //int
     compile();
@@ -100,7 +100,7 @@ public class AddRefStatInteractionProc
     input = new HashMap();
 
     input.put( "@RefStatID", getStatID() );
-    input.put( "@RefReferralID", getInteractionID() );
+    input.put( "@RefInteractionID", getInteractionID() );
 
     out = execute( input );
 

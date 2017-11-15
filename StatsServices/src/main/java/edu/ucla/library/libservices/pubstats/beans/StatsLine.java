@@ -11,6 +11,7 @@ public class StatsLine
   private Date dateTime;
   private String logonID;
   private double timeSpent;
+  private int patronCount;
 
   public StatsLine()
   {
@@ -85,5 +86,15 @@ public class StatsLine
   public double getTimeSpent()
   {
     return timeSpent;
+  }
+
+  public void setPatronCount( int patronCount )
+  {
+    this.patronCount = patronCount;
+  }
+
+  public int getPatronCount()
+  {
+    return patronCount;
   }
 }

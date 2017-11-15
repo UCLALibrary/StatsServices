@@ -2,8 +2,6 @@ package edu.ucla.library.libservices.pubstats.beans;
 
 import edu.ucla.library.libservices.pubstats.util.DateAdapter;
 
-//import java.time.LocalDateTime;
-
 import java.util.Date;
 import java.util.List;
 
@@ -17,10 +15,12 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlRootElement( name = "Submission" )
 public class Submission
 {
-  @XmlElement(name = "unitID")
-  private String unitID; 
-  @XmlElement(name = "pointID")
-  private String pointID;
+  //@XmlElement(name = "unitID")
+  //private String unitID; 
+  //@XmlElement(name = "pointID")
+  //private String pointID;
+  @XmlElement(name = "unitPointID")
+  private String unitPointID;
   @XmlElement(name = "dateTime")
   @XmlJavaTypeAdapter( DateAdapter.class )
   private Date dateTime;
@@ -30,7 +30,9 @@ public class Submission
   private double timeSpent;
   @XmlElement(name = "detailed")
   private boolean detailed;
-  @XmlElement(name = "stats")
+  @XmlElement(name = "patronCount")
+  private int patronCount;
+  @XmlElement(name="stats")
   private List<BaseStat> stats;
   @XmlElement(name = "referral", required = false )
   private Referral referral;
@@ -42,7 +44,7 @@ public class Submission
     super();
   }
 
-  public void setUnitID( String unitID )
+  /*public void setUnitID( String unitID )
   {
     this.unitID = unitID;
   }
@@ -60,7 +62,7 @@ public class Submission
   public String getPointID()
   {
     return pointID;
-  }
+  }*/
 
   public void setDateTime( Date dateTime )
   {
@@ -130,5 +132,25 @@ public class Submission
   public boolean isDetailed()
   {
     return detailed;
+  }
+
+  public void setPatronCount( int patronCount )
+  {
+    this.patronCount = patronCount;
+  }
+
+  public int getPatronCount()
+  {
+    return patronCount;
+  }
+
+  public void setUnitPointID( String unitPointID )
+  {
+    this.unitPointID = unitPointID;
+  }
+
+  public String getUnitPointID()
+  {
+    return unitPointID;
   }
 }

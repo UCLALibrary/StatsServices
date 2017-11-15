@@ -82,15 +82,16 @@ public class AddRefStatProc
   {
     setDataSource( ds );
     setFunction( false );
-    setSql( "uspAddRefStat" );
+    setSql( "PSS_Test.dbo.uspAddRefStat" );
     declareParameter( new SqlParameter( "@AggregateID", Types.VARCHAR ) );
     declareParameter( new SqlParameter( "@Count", Types.INTEGER ) ); //int
     declareParameter( new SqlParameter( "@dataMonth", Types.INTEGER ) ); //int
     declareParameter( new SqlParameter( "@dataYear", Types.INTEGER ) ); //int
     declareParameter( new SqlParameter( "@DateTime", Types.TIMESTAMP ) ); //timestamp
     declareParameter( new SqlParameter( "@LogonID", Types.VARCHAR ) );
-    declareParameter( new SqlParameter( "@InputMethod", Types.VARCHAR ) );
+    declareParameter( new SqlParameter( "@InputMethod", Types.INTEGER ) );
     declareParameter( new SqlParameter( "@TimeSpent", Types.FLOAT ) ); //float
+    declareParameter( new SqlParameter( "@PatronCount", Types.INTEGER ) ); //int
     compile();
   }
 
@@ -110,6 +111,7 @@ public class AddRefStatProc
     input.put( "@LogonID", getData().getLogonID() );
     input.put( "@InputMethod", INPUT_METHOD );
     input.put( "@TimeSpent", getData().getTimeSpent() );
+    input.put( "@PatronCount", getData().getPatronCount() );
 
     out = execute( input );
 

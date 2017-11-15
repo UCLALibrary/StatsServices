@@ -79,7 +79,7 @@ public class AddRefReferralProc
   {
     setDataSource( ds );
     setFunction( false );
-    setSql( "uspAddRefReferral" );
+    setSql( "PSS_Test.dbo.uspAddRefReferral" );
     declareParameter( new SqlParameter( "@dataMonth", Types.INTEGER ) ); //int
     declareParameter( new SqlParameter( "@dataYear", Types.INTEGER ) ); //int
     declareParameter( new SqlParameter( "@DateTime", Types.TIMESTAMP ) ); //timestamp
