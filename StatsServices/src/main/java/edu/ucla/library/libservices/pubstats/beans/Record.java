@@ -1,11 +1,14 @@
 package edu.ucla.library.libservices.pubstats.beans;
 
+import edu.ucla.library.libservices.pubstats.util.DateAdapter;
+
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @XmlAccessorType( XmlAccessType.FIELD )
 @XmlRootElement( name = "Record" )
@@ -16,6 +19,7 @@ public class Record
   @XmlElement(name = "count")
   private int count;
   @XmlElement(name = "createdDT")
+  @XmlJavaTypeAdapter( DateAdapter.class )
   private Date createdDT;
   @XmlElement(name = "logonID")
   private String logonID;

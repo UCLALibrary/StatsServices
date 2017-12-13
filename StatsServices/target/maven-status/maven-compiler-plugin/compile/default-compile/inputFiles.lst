@@ -24,6 +24,7 @@ H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pu
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\web\service\LookupService.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\beans\Department.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\beans\UnitPoint.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\generators\UserAccountGenerator.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\beans\Referral.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\generators\TypeGenerator.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\handlers\SubmissionHandler.java
@@ -32,5 +33,7 @@ H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pu
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\procs\AddRefStatProc.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\util\DateExtractor.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\util\DateAdapter.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\beans\UserAccount.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\generators\UnitPointGenerator.java
 H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\mappers\UnitPointMapper.java
+H:\Git\StatsServices\StatsServices\src\main\java\edu\ucla\library\libservices\pubstats\db\mappers\UserAccountMapper.java

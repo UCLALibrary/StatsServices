@@ -39,7 +39,13 @@ public class Tester
 
   public static void main( String[] args )
   {
-    Interaction interaction;
+    RecordGenerator generator;
+    Record theRecord;
+    generator = new RecordGenerator();
+    generator.setDbName( "dbName" );
+    theRecord = generator.getTheRecord();
+    System.out.println( "record date = " + theRecord.getCreatedDT() );
+    /*Interaction interaction;
     List<BaseStat> stats;
     Referral referral;
     Submission submit;
@@ -57,14 +63,14 @@ public class Tester
     stats.add( addStat( "01", "01", 1 ) );
     stats.add( addStat( "01", "02", 2 ) );
     stats.add( addStat( "01", "03", 3 ) );
-    
+
     submit.setStats( stats );
-    
+
     referral = new Referral();
     referral.setText( "testing submission" );
-    
+
     submit.setReferral( referral );
-    
+
     interaction = new Interaction();
     interaction.setCourse( "Math 305" );
     interaction.setDepartmentID( 35 );
@@ -72,14 +78,14 @@ public class Tester
     interaction.setPatronType( 1 );
     interaction.setStaffFeedback( "de nada" );
     interaction.setTopic( "linear differential equations" );
-    
+
     submit.setInteraction( interaction );
 
 
     handler = new SubmissionHandler();
     handler.setDbName( "dbname" );
     handler.setSubmission( submit );
-    
+
     try
     {
       handler.submitStats();
@@ -87,7 +93,7 @@ public class Tester
     catch ( Exception e )
     {
       e.printStackTrace();
-    }
+    }*/
   }
 
   private static BaseStat addStat( String type, String mode, int count )

@@ -8,6 +8,7 @@ edu\ucla\library\libservices\pubstats\generators\RecordGenerator.class
 edu\ucla\library\libservices\pubstats\web\service\LookupService.class
 edu\ucla\library\libservices\pubstats\beans\Record.class
 edu\ucla\library\libservices\pubstats\util\StatsLineBuilder.class
+edu\ucla\library\libservices\pubstats\beans\UserAccount.class
 edu\ucla\library\libservices\pubstats\generators\ModeGenerator.class
 edu\ucla\library\libservices\pubstats\beans\Department.class
 edu\ucla\library\libservices\pubstats\generators\UnitPointGenerator.class
@@ -25,6 +26,7 @@ edu\ucla\library\libservices\pubstats\db\procs\AddRefInteractionsProc.class
 edu\ucla\library\libservices\pubstats\generators\TypeGenerator.class
 edu\ucla\library\libservices\pubstats\db\mappers\QuestionMapper.class
 edu\ucla\library\libservices\pubstats\db\mappers\RecordMapper.class
+edu\ucla\library\libservices\pubstats\generators\UserAccountGenerator.class
 edu\ucla\library\libservices\pubstats\beans\Submission.class
 edu\ucla\library\libservices\pubstats\util\DateAdapter.class
 edu\ucla\library\libservices\pubstats\beans\Unit.class
@@ -33,4 +35,5 @@ edu\ucla\library\libservices\pubstats\db\procs\AddRefReferralProc.class
 edu\ucla\library\libservices\pubstats\db\procs\AddRefStatReferralProc.class
 edu\ucla\library\libservices\pubstats\beans\Interaction.class
 edu\ucla\library\libservices\pubstats\db\mappers\DepartmentMapper.class
+edu\ucla\library\libservices\pubstats\db\mappers\UserAccountMapper.class
 edu\ucla\library\libservices\pubstats\web\service\SubmitService.class

@@ -17,6 +17,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import edu.ucla.library.libservices.pubstats.beans.Record;
 import edu.ucla.library.libservices.pubstats.generators.RecordGenerator;
+import edu.ucla.library.libservices.pubstats.generators.UserAccountGenerator;
 
 @Api(value = "/lookup", description = "Lookup operations on db")
 @Path( "/lookup" )
@@ -96,5 +97,23 @@ public class LookupService
     docMaker.setDbName( config.getServletContext().getInitParameter( "datasource.stats" ) );
     
     return Response.ok( docMaker.getTheRecord() ).build();
+  }
+
+  @GET
+  @Produces( "application/json" )
+  @Path( "/users" )
+  @ApiOperation(value = "Finds generic department user accounts",
+    response = UserAccountGenerator.class,
+    responseContainer = "List")
+  public Response getUsers()
+  {
+    UserAccountGenerator docMaker;
+
+    docMaker = new UserAccountGenerator();
+    docMaker.setDbName( config.getServletContext().getInitParameter( "datasource.stats" ) );
+    
+    docMaker.populateUsers();
+
+    return Response.ok( docMaker ).build();
   }
 }

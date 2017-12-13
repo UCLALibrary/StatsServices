@@ -25,7 +25,7 @@ public class RecordMapper
     bean.setAggregateID( rs.getString( "AggregateID" ) );
     bean.setCount( rs.getInt( "Count" ) );
     bean.setCourse( rs.getString( "Course" ) );
-    bean.setCreatedDT( rs.getDate( "Created_DT" ) );
+    bean.setCreatedDT( rs.getTimestamp( "Created_DT" ) );
     bean.setDepartmentID( rs.getInt( "DepartmentID" ) );
     bean.setLogonID( rs.getString( "LogonID" ) );
     bean.setPatronCount( rs.getInt( "PatronCount" ) );
