@@ -34,8 +34,10 @@ public class Submission
   private int patronCount;
   @XmlElement(name="stats")
   private List<BaseStat> stats;
+  //@XmlElement(name = "referral", required = false )
+  //private Referral referral;
   @XmlElement(name = "referral", required = false )
-  private Referral referral;
+  private boolean referral;
   @XmlElement(name = "interaction", required = false )
   private Interaction interaction;
 
@@ -104,12 +106,14 @@ public class Submission
     return stats;
   }
 
-  public void setReferral( Referral referral )
+  //public void setReferral( Referral referral )
+  public void setReferral( boolean referral )
   {
     this.referral = referral;
   }
 
-  public Referral getReferral()
+  //public Referral getReferral()
+  public boolean getReferral()
   {
     return referral;
   }

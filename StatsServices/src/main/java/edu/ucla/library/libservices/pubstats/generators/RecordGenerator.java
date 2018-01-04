@@ -18,7 +18,8 @@ public class RecordGenerator
     + "StaffFeedback,PatronType,PatronFeedback FROM dbo.ReferenceStatistics rs LEFT JOIN dbo.RefStatReferrals rsr ON" 
     + " rs.RecordID = rsr.RefStatID LEFT JOIN dbo.RefReferrals rr ON rsr.RefReferralID = rr.ReferralID LEFT JOIN" 
     + " dbo.RefStatInteractions rsi ON rs.RecordID = rsi.RefStatID LEFT JOIN dbo.RefInteractions ri ON " 
-    + "rsi.RefInteractionID = ri.InteractionID WHERE rs.RecordID = (select max(RecordID) from dbo.ReferenceStatistics)";
+    + "rsi.RefInteractionID = ri.InteractionID WHERE rs.RecordID = (select max(RecordID) from dbo.ReferenceStatistics" 
+    + " WHERE AggregateID NOT LIKE '%0000')";
 
   private Record theRecord;
   private String dbName;

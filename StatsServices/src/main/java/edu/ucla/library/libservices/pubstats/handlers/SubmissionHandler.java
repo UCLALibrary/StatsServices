@@ -100,8 +100,9 @@ public class SubmissionHandler
     if ( isTransaction )
       submitTransaction( getSubmission().getStats().get( 0 ) );
 
-    if ( getSubmission().getReferral() != null && getSubmission().getReferral().getText() != null &&
-         getSubmission().getReferral().getText().trim().length() > 0 )
+    /*if ( getSubmission().getReferral() != null && getSubmission().getReferral().getText() != null &&
+         getSubmission().getReferral().getText().trim().length() > 0 )*/
+    if ( getSubmission().getReferral() )
       submitReferral();
 
     if ( getSubmission().isDetailed() )

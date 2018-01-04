@@ -100,7 +100,7 @@ public class AddRefReferralProc
     input.put( "@dataYear", DateExtractor.getCalendarPart( getData().getDateTime(), Calendar.YEAR ) );
     input.put( "@DateTime", getData().getDateTime() );
     input.put( "@LogonID", getData().getOperator() );
-    input.put( "@ReferralText", getData().getReferral().getText() );
+    input.put( "@ReferralText", "" );
 
     out = execute( input );
 

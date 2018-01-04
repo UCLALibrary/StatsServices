@@ -10,8 +10,8 @@ edu\ucla\library\libservices\pubstats\beans\Record.class
 edu\ucla\library\libservices\pubstats\util\StatsLineBuilder.class
 edu\ucla\library\libservices\pubstats\beans\UserAccount.class
 edu\ucla\library\libservices\pubstats\generators\ModeGenerator.class
-edu\ucla\library\libservices\pubstats\beans\Department.class
 edu\ucla\library\libservices\pubstats\generators\UnitPointGenerator.class
+edu\ucla\library\libservices\pubstats\beans\Department.class
 edu\ucla\library\libservices\pubstats\beans\UnitPoint.class
 edu\ucla\library\libservices\pubstats\db\mappers\UnitMapper.class
 edu\ucla\library\libservices\pubstats\handlers\SubmissionHandler.class
@@ -19,11 +19,11 @@ edu\ucla\library\libservices\pubstats\beans\Referral.class
 edu\ucla\library\libservices\pubstats\beans\BaseStat.class
 edu\ucla\library\libservices\pubstats\beans\InteractionMode.class
 edu\ucla\library\libservices\pubstats\tests\Tester.class
-edu\ucla\library\libservices\pubstats\beans\QuestionType.class
 edu\ucla\library\libservices\pubstats\generators\DepartmentGenerator.class
+edu\ucla\library\libservices\pubstats\beans\QuestionType.class
 edu\ucla\library\libservices\pubstats\db\procs\AddRefStatInteractionProc.class
-edu\ucla\library\libservices\pubstats\db\procs\AddRefInteractionsProc.class
 edu\ucla\library\libservices\pubstats\generators\TypeGenerator.class
+edu\ucla\library\libservices\pubstats\db\procs\AddRefInteractionsProc.class
 edu\ucla\library\libservices\pubstats\db\mappers\QuestionMapper.class
 edu\ucla\library\libservices\pubstats\db\mappers\RecordMapper.class
 edu\ucla\library\libservices\pubstats\generators\UserAccountGenerator.class
