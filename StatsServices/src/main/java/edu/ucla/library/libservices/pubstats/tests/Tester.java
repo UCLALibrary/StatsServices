@@ -39,13 +39,13 @@ public class Tester
 
   public static void main( String[] args )
   {
-    RecordGenerator generator;
+    /*RecordGenerator generator;
     Record theRecord;
     generator = new RecordGenerator();
     generator.setDbName( "dbName" );
     theRecord = generator.getTheRecord();
-    System.out.println( "record date = " + theRecord.getCreatedDT() );
-    /*Interaction interaction;
+    System.out.println( "record date = " + theRecord.getCreatedDT() );*/
+    Interaction interaction;
     List<BaseStat> stats;
     Referral referral;
     Submission submit;
@@ -54,10 +54,10 @@ public class Tester
     submit = new Submission();
     submit.setDateTime( new Date() );
     submit.setDetailed( true );
-    submit.setOperator( "drickard1967" );
+    submit.setOperator( "drickard" );
     submit.setPatronCount( 1 );
     submit.setTimeSpent( 15D );
-    submit.setUnitPointID( "ART0001" );
+    submit.setUnitPointID( "CLK0001" );
 
     stats = new ArrayList<BaseStat>( 3 );
     stats.add( addStat( "01", "01", 1 ) );
@@ -69,15 +69,15 @@ public class Tester
     referral = new Referral();
     referral.setText( "testing submission" );
 
-    submit.setReferral( referral );
+    //submit.setReferral( referral );
 
     interaction = new Interaction();
-    interaction.setCourse( "Math 305" );
+    interaction.setCourse( "Math 503" );
     interaction.setDepartmentID( 35 );
-    interaction.setPatronFeedback( "party on wayne" );
+    interaction.setPatronFeedback( "tubular" );
     interaction.setPatronType( 1 );
-    interaction.setStaffFeedback( "de nada" );
-    interaction.setTopic( "linear differential equations" );
+    interaction.setStaffFeedback( "whatevs" );
+    interaction.setTopic( "P vs NP" );
 
     submit.setInteraction( interaction );
 
@@ -93,7 +93,7 @@ public class Tester
     catch ( Exception e )
     {
       e.printStackTrace();
-    }*/
+    }
   }
 
   private static BaseStat addStat( String type, String mode, int count )

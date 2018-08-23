@@ -38,7 +38,10 @@ public class StatsLineBuilder
       //logger.info( "building stats line with operator " + general.getOperator() );
       theLine.setLogonID( general.getOperator() );
       //logger.info( "building stats line with time spent " + general.getTimeSpent() + " and size " + general.getStats().size() );
-      theLine.setTimeSpent( general.getTimeSpent() / general.getStats().size() );
+      if ( general.isDetailed() )
+        theLine.setTimeSpent( general.getTimeSpent() / general.getStats().size() );
+      else
+        theLine.setTimeSpent( 1.0D );
       //logger.info( "building stats line with patrons " + general.getPatronCount() );
       theLine.setPatronCount( general.getPatronCount() );
 
