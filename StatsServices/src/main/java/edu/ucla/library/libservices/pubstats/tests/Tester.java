@@ -1,34 +1,34 @@
 package edu.ucla.library.libservices.pubstats.tests;
 
 import edu.ucla.library.libservices.pubstats.beans.BaseStat;
-import edu.ucla.library.libservices.pubstats.beans.Department;
+//import edu.ucla.library.libservices.pubstats.beans.Department;
 import edu.ucla.library.libservices.pubstats.beans.Interaction;
-import edu.ucla.library.libservices.pubstats.beans.Referral;
-import edu.ucla.library.libservices.pubstats.beans.StatsLine;
+//import edu.ucla.library.libservices.pubstats.beans.Referral;
+//import edu.ucla.library.libservices.pubstats.beans.StatsLine;
 import edu.ucla.library.libservices.pubstats.beans.Submission;
-import edu.ucla.library.libservices.pubstats.db.procs.AddRefInteractionsProc;
-import edu.ucla.library.libservices.pubstats.db.procs.AddRefReferralProc;
-import edu.ucla.library.libservices.pubstats.db.procs.AddRefStatProc;
+//import edu.ucla.library.libservices.pubstats.db.procs.AddRefInteractionsProc;
+//import edu.ucla.library.libservices.pubstats.db.procs.AddRefReferralProc;
+//import edu.ucla.library.libservices.pubstats.db.procs.AddRefStatProc;
 
-import edu.ucla.library.libservices.pubstats.generators.DepartmentGenerator;
+//import edu.ucla.library.libservices.pubstats.generators.DepartmentGenerator;
 
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
 
 //import java.util.Date;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+//import java.util.Map;
+//import java.util.Set;
 
-import edu.ucla.library.libservices.pubstats.beans.Interaction;
-import edu.ucla.library.libservices.pubstats.beans.Record;
-import edu.ucla.library.libservices.pubstats.generators.RecordGenerator;
+//import edu.ucla.library.libservices.pubstats.beans.Interaction;
+//import edu.ucla.library.libservices.pubstats.beans.Record;
+//import edu.ucla.library.libservices.pubstats.generators.RecordGenerator;
 
 import edu.ucla.library.libservices.pubstats.handlers.SubmissionHandler;
 
 import java.util.ArrayList;
 
-import javax.ws.rs.core.Response;
+//import javax.ws.rs.core.Response;
 
 public class Tester
 {
@@ -39,6 +39,8 @@ public class Tester
 
   public static void main( String[] args )
   {
+    double value = 1.123D;
+    System.out.println( "rounded value = " + Math.round( value ) );
     /*RecordGenerator generator;
     Record theRecord;
     generator = new RecordGenerator();
@@ -47,7 +49,7 @@ public class Tester
     System.out.println( "record date = " + theRecord.getCreatedDT() );*/
     Interaction interaction;
     List<BaseStat> stats;
-    Referral referral;
+    //Referral referral;
     Submission submit;
     SubmissionHandler handler;
 
@@ -56,7 +58,7 @@ public class Tester
     submit.setDetailed( true );
     submit.setOperator( "drickard" );
     submit.setPatronCount( 1 );
-    submit.setTimeSpent( 15D );
+    submit.setTimeSpent( 17D );
     submit.setUnitPointID( "CLK0001" );
 
     stats = new ArrayList<BaseStat>( 3 );
@@ -66,21 +68,22 @@ public class Tester
 
     submit.setStats( stats );
 
-    referral = new Referral();
-    referral.setText( "testing submission" );
+    //referral = new Referral();
+    //referral.setText( "testing submission" );
 
     //submit.setReferral( referral );
+    
+    submit.setReferral( true );
 
     interaction = new Interaction();
     interaction.setCourse( "Math 503" );
-    interaction.setDepartmentID( 35 );
+    interaction.setDepartmentID( 22 );
     interaction.setPatronFeedback( "tubular" );
     interaction.setPatronType( 1 );
     interaction.setStaffFeedback( "whatevs" );
     interaction.setTopic( "P vs NP" );
 
     submit.setInteraction( interaction );
-
 
     handler = new SubmissionHandler();
     handler.setDbName( "dbname" );

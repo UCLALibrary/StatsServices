@@ -60,33 +60,33 @@ public class SubmissionHandler
     statsIDs = new ArrayList<String>();
 
     logger.info( "in submitStats" );
-    System.out.println( "in submitStats" );
+    //System.out.println( "in submitStats" );
 
     try
     {
-      //logger.info( "stat value: " + getSubmission().getOperator() );
-      //logger.info( "stat value: " + getSubmission().getUnitPointID() );
-      //logger.info( "stat value: " + getSubmission().getDateTime() );
-      //logger.info( "stat value: " + getSubmission().getTimeSpent() );
-      //logger.info( "stat value: " + getSubmission().isDetailed() );
-
       for ( BaseStat theStat : getSubmission().getStats() )
       {
-        StatsLine inputLine;
-
-        //logger.info( "building stats line with mode " + theStat.getModeID() );
-
-        //logger.info( "checking if transaction for type " + theStat.getTypeID() );
-        if ( TRANSACTION_TYPES.contains( theStat.getTypeID() ) )
+        if ( theStat.getCount() > 0 )
         {
-          //logger.info( "this is a transaction" );
-          System.out.println( "this is a transaction" );
-          isTransaction = true;
+          for ( int i = 1; i <= theStat.getCount(); i++ )
+          {
+            StatsLine inputLine;
+
+            //logger.info( "building stats line with mode " + theStat.getModeID() );
+
+            //logger.info( "checking if transaction for type " + theStat.getTypeID() );
+            if ( TRANSACTION_TYPES.contains( theStat.getTypeID() ) )
+            {
+              //logger.info( "this is a transaction" );
+              //System.out.println( "this is a transaction" );
+              isTransaction = true;
+            }
+
+            inputLine = StatsLineBuilder.buildLine( getSubmission(), theStat );
+
+            submitLine( inputLine, true );
+          }
         }
-
-        inputLine = StatsLineBuilder.buildLine( getSubmission(), theStat );
-
-        submitLine( inputLine, true );
       }
     }
     catch ( Exception e )
@@ -119,7 +119,7 @@ public class SubmissionHandler
     proc.setDbName( getDbName() );
 
     logger.info( "in submitLine; AggregateID = " + input.getAggregateID() );
-    System.out.println( "in submitLine; AggregateID = " + input.getAggregateID() );
+    //System.out.println( "in submitLine; AggregateID = " + input.getAggregateID() );
 
     try
     {
@@ -130,7 +130,7 @@ public class SubmissionHandler
           if ( results.get( key ).toString().contains( "StatisticID" ) )
           {
             logger.info( "saved stat " + results.get( key ).toString() );
-            System.out.println( "saved stat " + results.get( key ).toString() );
+            //System.out.println( "saved stat " + results.get( key ).toString() );
             statsIDs.add( results.get( key ).toString().substring( results.get( key ).toString().indexOf( "=" ) + 1,
                                                                    results.get( key ).toString().indexOf( "}" ) ) );
           }
@@ -159,7 +159,7 @@ public class SubmissionHandler
   private void submitReferral()
   {
     logger.info( "handling referral record" );
-    System.out.println( "handling referral record" );
+    //System.out.println( "handling referral record" );
     AddRefReferralProc proc;
     List<String> refIDs;
     Map results;
@@ -198,7 +198,7 @@ public class SubmissionHandler
         AddRefStatReferralProc proc;
 
         logger.info( "handling stat-referral link for stat " + statID + " and referral " + refID );
-        System.out.println( "handling stat-referral link for stat " + statID + " and referral " + refID );
+        //System.out.println( "handling stat-referral link for stat " + statID + " and referral " + refID );
 
         proc = new AddRefStatReferralProc();
         proc.setDbName( getDbName() );
@@ -223,7 +223,7 @@ public class SubmissionHandler
   private void submitInteraction()
   {
     logger.info( "handling interaction insertion" );
-    System.out.println( "handling interaction insertion" );
+    //System.out.println( "handling interaction insertion" );
     AddRefInteractionsProc proc;
     List<String> interactIDs;
     Map results;
@@ -262,7 +262,7 @@ public class SubmissionHandler
         AddRefStatInteractionProc proc;
 
         logger.info( "handling stat-referral link for stat " + statID + " and interaction " + intID );
-        System.out.println( "handling stat-referral link for stat " + statID + " and interaction " + intID );
+        //System.out.println( "handling stat-referral link for stat " + statID + " and interaction " + intID );
 
         proc = new AddRefStatInteractionProc();
         proc.setDbName( getDbName() );

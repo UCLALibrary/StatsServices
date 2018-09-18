@@ -157,4 +157,18 @@ public class Submission
   {
     return unitPointID;
   }
+  
+  public String toString()
+  {
+    StringBuffer buffer;
+    buffer = new StringBuffer();
+    buffer.append( this.getUnitPointID() ).append( "\t" ).append( this.getDateTime() );
+    buffer.append( "\t" ).append( this.getOperator() ).append( this.getPatronCount() );
+    buffer.append( "\n\t" ).append( "Stats: " );
+    buffer.append( "\n\tMode\tType\tCount" );
+    for ( BaseStat theStat : getStats() )
+      buffer.append( "\n\t" ).append( theStat.getModeID() ).append( "\t" )
+            .append( theStat.getTypeID() ).append( "\t" ).append( theStat.getCount() );
+    return buffer.toString();
+  }
 }

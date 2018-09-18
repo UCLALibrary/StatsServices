@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 public class StatsLineBuilder
 {
   final static Logger logger = Logger.getLogger( StatsLineBuilder.class );
+  final static double MIN_TIME = 1.0D;
 
   public StatsLineBuilder()
   {
@@ -28,7 +29,10 @@ public class StatsLineBuilder
       //logger.info( "building stats line with " + general.getUnitPointID() + ", " + details.getTypeID() + " , " + details.getModeID() );
       theLine.setAggregateID( general.getUnitPointID().concat( details.getTypeID() ).concat( details.getModeID() ) );
       //logger.info( "building stats line with count " + details.getCount() );
-      theLine.setCount( details.getCount() );
+      if ( general.isDetailed() )
+        theLine.setCount( details.getCount() );
+      else
+        theLine.setCount( 1 );
       //logger.info( "building stats line with data month" );
       theLine.setDataMonth( DateExtractor.getCalendarPart( general.getDateTime(), Calendar.MONTH ) );
       //logger.info( "building stats line with data year" );
@@ -39,9 +43,17 @@ public class StatsLineBuilder
       theLine.setLogonID( general.getOperator() );
       //logger.info( "building stats line with time spent " + general.getTimeSpent() + " and size " + general.getStats().size() );
       if ( general.isDetailed() )
-        theLine.setTimeSpent( general.getTimeSpent() / general.getStats().size() );
+      {
+        double perLine;
+        perLine = general.getTimeSpent() / general.getStats().size();
+        if ( perLine < MIN_TIME )
+          perLine = MIN_TIME;
+        else
+          perLine = Math.round( perLine );
+        theLine.setTimeSpent( perLine );        
+      }
       else
-        theLine.setTimeSpent( 1.0D );
+        theLine.setTimeSpent( MIN_TIME );
       //logger.info( "building stats line with patrons " + general.getPatronCount() );
       theLine.setPatronCount( general.getPatronCount() );
 

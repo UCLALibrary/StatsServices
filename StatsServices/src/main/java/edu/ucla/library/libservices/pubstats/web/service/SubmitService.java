@@ -3,6 +3,8 @@ package edu.ucla.library.libservices.pubstats.web.service;
 import edu.ucla.library.libservices.pubstats.beans.Submission;
 import edu.ucla.library.libservices.pubstats.handlers.SubmissionHandler;
 
+import edu.ucla.library.libservices.pubstats.util.StatsLineBuilder;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -16,12 +18,15 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 
+import org.apache.log4j.Logger;
+
 @Api(value = "/stats", description = "Submit data to db")
 @Path( "/stats/" )
 public class SubmitService
 {
   @Context
   ServletConfig config;
+  final static Logger logger = Logger.getLogger( SubmitService.class );
 
   public SubmitService()
   {
@@ -40,6 +45,7 @@ public class SubmitService
     SubmissionHandler handler;
     handler = new SubmissionHandler();
     handler.setDbName( config.getServletContext().getInitParameter( "datasource.stats" ) );
+    logger.info( "receieved stats data \n" + theStats );
     handler.setSubmission( theStats );
     
     try
