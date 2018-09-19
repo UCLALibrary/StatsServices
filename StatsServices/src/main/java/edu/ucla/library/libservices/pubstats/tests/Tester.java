@@ -61,10 +61,13 @@ public class Tester
     submit.setTimeSpent( 17D );
     submit.setUnitPointID( "CLK0001" );
 
-    stats = new ArrayList<BaseStat>( 3 );
-    stats.add( addStat( "01", "01", 1 ) );
-    stats.add( addStat( "01", "02", 2 ) );
-    stats.add( addStat( "01", "03", 3 ) );
+    stats = new ArrayList<BaseStat>( 6 );
+    stats.add( addStat( "01", "01", 0 ) );
+    stats.add( addStat( "02", "01", 0 ) );
+    stats.add( addStat( "05", "01", 1 ) );
+    stats.add( addStat( "10", "01", 1 ) );
+    stats.add( addStat( "12", "01", 0 ) );
+    stats.add( addStat( "13", "01", 0 ) );
 
     submit.setStats( stats );
 

@@ -12,6 +12,7 @@ public class StatsLineBuilder
 {
   final static Logger logger = Logger.getLogger( StatsLineBuilder.class );
   final static double MIN_TIME = 1.0D;
+  final static int MIN_PATRON = 1;
 
   public StatsLineBuilder()
   {
@@ -45,7 +46,7 @@ public class StatsLineBuilder
       if ( general.isDetailed() )
       {
         double perLine;
-        perLine = general.getTimeSpent() / general.getStats().size();
+        perLine = general.getTimeSpent() / general.getActualRows();
         if ( perLine < MIN_TIME )
           perLine = MIN_TIME;
         else
@@ -55,7 +56,10 @@ public class StatsLineBuilder
       else
         theLine.setTimeSpent( MIN_TIME );
       //logger.info( "building stats line with patrons " + general.getPatronCount() );
-      theLine.setPatronCount( general.getPatronCount() );
+      if ( general.getPatronCount() > 0 )
+        theLine.setPatronCount( general.getPatronCount() );
+      else
+        theLine.setPatronCount( MIN_PATRON );
 
       return theLine;
     }

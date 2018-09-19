@@ -40,6 +40,7 @@ public class Submission
   private boolean referral;
   @XmlElement(name = "interaction", required = false )
   private Interaction interaction;
+  private int actualRows;
 
   public Submission()
   {
@@ -158,6 +159,16 @@ public class Submission
     return unitPointID;
   }
   
+  public void setActualRows( int actualRows )
+  {
+    this.actualRows = actualRows;
+  }
+
+  public int getActualRows()
+  {
+    return actualRows;
+  }
+
   public String toString()
   {
     StringBuffer buffer;

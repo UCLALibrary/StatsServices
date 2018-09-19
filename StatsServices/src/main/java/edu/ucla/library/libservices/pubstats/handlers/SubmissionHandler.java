@@ -61,7 +61,10 @@ public class SubmissionHandler
 
     logger.info( "in submitStats" );
     //System.out.println( "in submitStats" );
-
+    
+    if ( getSubmission().isDetailed() )
+      calculateRows();
+    
     try
     {
       for ( BaseStat theStat : getSubmission().getStats() )
@@ -282,6 +285,20 @@ public class SubmissionHandler
         }
       }
     }
+  }
+  
+  private void calculateRows()
+  {
+    int notEmptylRows;
+
+    notEmptylRows = 0;
+    
+    for ( BaseStat theRow : getSubmission().getStats() )
+    {
+      if ( theRow.getCount() > 0 )
+        notEmptylRows += 1;
+    }
+    getSubmission().setActualRows( notEmptylRows );
   }
 }
 /*
