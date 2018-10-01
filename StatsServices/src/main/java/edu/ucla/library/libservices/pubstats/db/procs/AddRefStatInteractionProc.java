@@ -68,8 +68,8 @@ public class AddRefStatInteractionProc
 
   private void makeConnection()
   {
-    //ds = DataSourceFactory.createDataSource( getDbName() );
-    ds = DataSourceFactory.getStatsConnection();
+    ds = DataSourceFactory.createDataSource( getDbName() );
+    //ds = DataSourceFactory.getStatsConnection();
   }
 
   public void addStat()
@@ -85,7 +85,7 @@ public class AddRefStatInteractionProc
   {
     setDataSource( ds );
     setFunction( false );
-    setSql( "PSS_Test.dbo.uspAddRefStatInteraction" );
+    setSql( "dbo.uspAddRefStatInteraction" );
     declareParameter( new SqlParameter( "@RefStatID", Types.INTEGER ) ); //int
     declareParameter( new SqlParameter( "@RefInteractionID", Types.INTEGER ) ); //int
     compile();

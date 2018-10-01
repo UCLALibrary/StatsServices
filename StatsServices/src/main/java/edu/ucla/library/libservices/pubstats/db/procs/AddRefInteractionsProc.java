@@ -60,8 +60,8 @@ public class AddRefInteractionsProc
 
   private void makeConnection()
   {
-    //ds = DataSourceFactory.createDataSource( getDbName() );
-    ds = DataSourceFactory.getStatsConnection();
+    ds = DataSourceFactory.createDataSource( getDbName() );
+    //ds = DataSourceFactory.getStatsConnection();
   }
 
   public Map addStat()
@@ -79,7 +79,7 @@ public class AddRefInteractionsProc
   {
     setDataSource( ds );
     setFunction( false );
-    setSql( "PSS_Test.dbo.uspAddRefInteractions" );
+    setSql( "dbo.uspAddRefInteractions" );
     declareParameter( new SqlParameter( "@dataMonth", Types.INTEGER ) );
     declareParameter( new SqlParameter( "@dataYear", Types.INTEGER ) ); 
     declareParameter( new SqlParameter( "@DateTime", Types.TIMESTAMP ) );

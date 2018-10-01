@@ -1,5 +1,6 @@
 package edu.ucla.library.libservices.pubstats.db.source;
 
+import javax.naming.Context;
 import javax.naming.InitialContext;
 
 import javax.naming.NamingException;
@@ -29,13 +30,15 @@ public class DataSourceFactory
 
   public static DataSource createDataSource( String name )
   {
+    Context envContext;
     InitialContext context;
     DataSource connection;
 
     try
     {
       context = new InitialContext();
-      connection = ( DataSource ) context.lookup( name );
+      envContext = (Context)context.lookup("java:/comp/env");
+      connection = ( DataSource ) envContext.lookup( name ); //( DataSource ) context.lookup( name );
     }
     catch ( NamingException e )
     {

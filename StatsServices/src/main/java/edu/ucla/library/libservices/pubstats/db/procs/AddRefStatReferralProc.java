@@ -68,8 +68,8 @@ public class AddRefStatReferralProc
 
   private void makeConnection()
   {
-    //ds = DataSourceFactory.createDataSource( getDbName() );
-    ds = DataSourceFactory.getStatsConnection();
+    ds = DataSourceFactory.createDataSource( getDbName() );
+    //ds = DataSourceFactory.getStatsConnection();
   }
 
   public void addStat()
@@ -85,7 +85,7 @@ public class AddRefStatReferralProc
   {
     setDataSource( ds );
     setFunction( false );
-    setSql( "PSS_Test.dbo.uspAddRefStatReferral" );
+    setSql( "dbo.uspAddRefStatReferral" );
     declareParameter( new SqlParameter( "@RefStatID", Types.INTEGER ) ); //int
     declareParameter( new SqlParameter( "@RefReferralID", Types.INTEGER ) ); //int
     compile();

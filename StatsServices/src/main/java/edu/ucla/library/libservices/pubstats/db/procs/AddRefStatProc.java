@@ -63,8 +63,8 @@ public class AddRefStatProc
 
   private void makeConnection()
   {
-    //ds = DataSourceFactory.createDataSource( getDbName() );
-    ds = DataSourceFactory.getStatsConnection();
+    ds = DataSourceFactory.createDataSource( getDbName() );
+    //ds = DataSourceFactory.getStatsConnection();
   }
 
   public Map addStat()
@@ -82,7 +82,7 @@ public class AddRefStatProc
   {
     setDataSource( ds );
     setFunction( false );
-    setSql( "PSS_Test.dbo.uspAddRefStat" );
+    setSql( "dbo.uspAddRefStat" );
     declareParameter( new SqlParameter( "@AggregateID", Types.VARCHAR ) );
     declareParameter( new SqlParameter( "@Count", Types.INTEGER ) ); //int
     declareParameter( new SqlParameter( "@dataMonth", Types.INTEGER ) ); //int

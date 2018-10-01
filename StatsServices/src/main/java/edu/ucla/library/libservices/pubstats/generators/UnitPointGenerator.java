@@ -25,15 +25,15 @@ public class UnitPointGenerator
 {
   private static final String ALL_POINTS =
     "SELECT DISTINCT ru.UnitID + rsp.PointID AS UnitPointID, ru.Descrpt AS Unit, rsp.Descrpt AS ServicePoint FROM" +
-    " PSS_Test.dbo.RefUnitCategory ruc INNER JOIN PSS_Test.dbo.RefUnit ru ON ruc.UnitID = ru.UnitID inner join " +
-    "PSS_Test.dbo.RefServicePoint rsp ON ruc.PointID = rsp.PointID WHERE ruc.Active = 1";
+    " dbo.RefUnitCategory ruc INNER JOIN dbo.RefUnit ru ON ruc.UnitID = ru.UnitID inner join " +
+    "dbo.RefServicePoint rsp ON ruc.PointID = rsp.PointID WHERE ruc.Active = 1";
   private static final String ALL_UNITS =
-    "SELECT DISTINCT ru.UnitID, ru.Descrpt AS Unit FROM PSS_Test.dbo.RefUnitCategory ruc INNER " +
-    "JOIN PSS_Test.dbo.RefUnit ru ON ruc.UnitID = ru.UnitID WHERE ruc.Active = 1";
+    "SELECT DISTINCT ru.UnitID, ru.Descrpt AS Unit FROM dbo.RefUnitCategory ruc INNER " +
+    "JOIN dbo.RefUnit ru ON ruc.UnitID = ru.UnitID WHERE ruc.Active = 1";
   private static final String UNIT_POINTS =
     "SELECT DISTINCT ru.UnitID + rsp.PointID AS UnitPointID,ru.Descrpt AS Unit,rsp.Descrpt AS ServicePoint FROM " +
-    "PSS_Test.dbo.RefUnitCategory ruc INNER JOIN PSS_Test.dbo.RefUnit ru ON ruc.UnitID = ru.UnitID INNER JOIN " +
-    "PSS_Test.dbo.RefServicePoint rsp ON ruc.PointID = rsp.PointID WHERE ru.UnitID = ?";
+    "dbo.RefUnitCategory ruc INNER JOIN dbo.RefUnit ru ON ruc.UnitID = ru.UnitID INNER JOIN " +
+    "dbo.RefServicePoint rsp ON ruc.PointID = rsp.PointID WHERE ru.UnitID = ?";
 
   @XmlElement( name = "units" )
   private List<Unit> units;
@@ -92,7 +92,7 @@ public class UnitPointGenerator
 
   private void makeConnection()
   {
-    //ds = DataSourceFactory.createDataSource( getDbName() );
-    ds = DataSourceFactory.getStatsConnection();
+    ds = DataSourceFactory.createDataSource( getDbName() );
+    //ds = DataSourceFactory.getStatsConnection();
   }
 }
