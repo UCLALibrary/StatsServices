@@ -20,7 +20,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class UserAccountGenerator
 {
   private static final String USER_QUERY =
-    "SELECT rua.LogonID,rua.FirstName + ' ' + rua.LastName AS Name,ru.Descrpt AS Unit FROM dbo.RefUserAccounts rua LEFT OUTER JOIN dbo.RefUserUnit ruu ON rua.AccountID = ruu.RefUserAccountID LEFT OUTER JOIN dbo.RefUnit ru ON ruu.RefUnitID = ru.UnitID WHERE rua.AccountType = 2";
+    "SELECT DISTINCT rua.LogonID,rua.FirstName + ' ' + rua.LastName AS Name,ru.Descrpt AS Unit FROM dbo.RefUserAccounts rua" +
+    " LEFT OUTER JOIN dbo.RefUserUnit ruu ON rua.AccountID = ruu.RefUserAccountID LEFT OUTER JOIN dbo.RefUnit ru" +
+    " ON ruu.RefUnitID = ru.UnitID WHERE rua.AccountType = 2 AND rua.Active = 1";
+  private static final String ALL_USERS_QUERY =
+    "SELECT DISTINCT rua.LogonID,rua.FirstName + ' ' + rua.LastName AS Name,ru.Descrpt AS Unit FROM dbo.RefUserAccounts rua" +
+    " LEFT OUTER JOIN dbo.RefUserUnit ruu ON rua.AccountID = ruu.RefUserAccountID LEFT OUTER JOIN dbo.RefUnit ru" +
+    " ON ruu.RefUnitID = ru.UnitID WHERE rua.Active = 1";
+
 
   @XmlElement( name = "users" )
   private List<UserAccount> users;
@@ -53,10 +60,13 @@ public class UserAccountGenerator
     return users;
   }
 
-  public void populateUsers()
+  public void populateUsers( String type )
   {
     makeConnection();
 
-    users = new JdbcTemplate( ds ).query( USER_QUERY, new UserAccountMapper() );
+    if ( type.equalsIgnoreCase( "all" ) )
+      users = new JdbcTemplate( ds ).query( ALL_USERS_QUERY, new UserAccountMapper() );
+    else
+      users = new JdbcTemplate( ds ).query( USER_QUERY, new UserAccountMapper() );
   }
 }

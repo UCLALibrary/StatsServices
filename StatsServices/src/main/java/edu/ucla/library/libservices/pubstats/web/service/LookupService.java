@@ -112,7 +112,25 @@ public class LookupService
     docMaker = new UserAccountGenerator();
     docMaker.setDbName( config.getServletContext().getInitParameter( "datasource.stats" ) );
     
-    docMaker.populateUsers();
+    docMaker.populateUsers("generic");
+
+    return Response.ok( docMaker ).build();
+  }
+
+  @GET
+  @Produces( "application/json" )
+  @Path( "/allusers" )
+  @ApiOperation(value = "Finds generic department user accounts",
+    response = UserAccountGenerator.class,
+    responseContainer = "List")
+  public Response getAllUsers()
+  {
+    UserAccountGenerator docMaker;
+
+    docMaker = new UserAccountGenerator();
+    docMaker.setDbName( config.getServletContext().getInitParameter( "datasource.stats" ) );
+    
+    docMaker.populateUsers("all");
 
     return Response.ok( docMaker ).build();
   }

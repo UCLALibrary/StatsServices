@@ -15,6 +15,9 @@ import edu.ucla.library.libservices.pubstats.beans.Submission;
 //import java.time.LocalDateTime;
 
 //import java.util.Date;
+import edu.ucla.library.libservices.pubstats.beans.UserAccount;
+import edu.ucla.library.libservices.pubstats.generators.UserAccountGenerator;
+
 import java.util.Date;
 import java.util.List;
 //import java.util.Map;
@@ -39,14 +42,22 @@ public class Tester
 
   public static void main( String[] args )
   {
-    double value = 1.123D;
+    List<UserAccount> users;
+    UserAccountGenerator gen;
+    gen = new UserAccountGenerator();
+    gen.setDbName( "dbName" );
+    gen.populateUsers( "all" );
+    users = gen.getUsers();
+    for ( UserAccount theUser : users )
+      System.out.println( theUser.getName() + "\t" + theUser.getUnit() + "\t" + theUser.getLogonID() );
+    /*double value = 1.123D;
     System.out.println( "rounded value = " + Math.round( value ) );
-    /*RecordGenerator generator;
+    RecordGenerator generator;
     Record theRecord;
     generator = new RecordGenerator();
     generator.setDbName( "dbName" );
     theRecord = generator.getTheRecord();
-    System.out.println( "record date = " + theRecord.getCreatedDT() );*/
+    System.out.println( "record date = " + theRecord.getCreatedDT() );
     Interaction interaction;
     List<BaseStat> stats;
     //Referral referral;
@@ -75,7 +86,7 @@ public class Tester
     //referral.setText( "testing submission" );
 
     //submit.setReferral( referral );
-    
+
     submit.setReferral( true );
 
     interaction = new Interaction();
@@ -99,7 +110,7 @@ public class Tester
     catch ( Exception e )
     {
       e.printStackTrace();
-    }
+    }*/
   }
 
   private static BaseStat addStat( String type, String mode, int count )
