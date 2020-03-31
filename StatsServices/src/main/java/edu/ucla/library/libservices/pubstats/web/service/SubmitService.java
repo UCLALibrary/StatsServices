@@ -18,7 +18,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Api(value = "/stats", description = "Submit data to db")
 @Path( "/stats/" )
@@ -26,7 +27,7 @@ public class SubmitService
 {
   @Context
   ServletConfig config;
-  final static Logger logger = Logger.getLogger( SubmitService.class );
+  final static Logger logger = LogManager.getLogger( SubmitService.class );
 
   public SubmitService()
   {
@@ -45,7 +46,7 @@ public class SubmitService
     SubmissionHandler handler;
     handler = new SubmissionHandler();
     handler.setDbName( config.getServletContext().getInitParameter( "datasource.stats" ) );
-    logger.info( "receieved stats data \n" + theStats );
+    //logger.info( "receieved stats data \n" + theStats );
     handler.setSubmission( theStats );
     
     try
@@ -56,6 +57,7 @@ public class SubmitService
     catch ( Exception e )
     {
       e.printStackTrace();
+      logger.fatal( "error with stats submission: " + e.getMessage() );
       return Response.serverError().entity( "Stats insertion failed: " + e.getMessage() ).build();
     }
   }
