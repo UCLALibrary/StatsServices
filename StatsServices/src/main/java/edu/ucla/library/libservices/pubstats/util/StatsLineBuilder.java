@@ -6,11 +6,12 @@ import edu.ucla.library.libservices.pubstats.beans.Submission;
 
 import java.util.Calendar;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class StatsLineBuilder
 {
-  final static Logger logger = Logger.getLogger( StatsLineBuilder.class );
+  final static Logger logger = LogManager.getLogger( StatsLineBuilder.class );
   final static double MIN_TIME = 1.0D;
   final static int MIN_PATRON = 1;
 
