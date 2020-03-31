@@ -15,13 +15,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SubmissionHandler
 {
   private static final List<String> TRANSACTION_TYPES =
     new ArrayList<String>( Arrays.asList( new String[] { "02", "03", "04", "05", "06", "08", "00" } ) );
-  final static Logger logger = Logger.getLogger( SubmissionHandler.class );
+  final static Logger logger = LogManager.getLogger( SubmissionHandler.class );
 
   private List<String> statsIDs;
   private String dbName;
