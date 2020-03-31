@@ -60,7 +60,7 @@ public class SubmissionHandler
     isTransaction = false;
     statsIDs = new ArrayList<String>();
 
-    logger.info( "in submitStats" );
+    //logger.info( "in submitStats" );
     //System.out.println( "in submitStats" );
     
     if ( getSubmission().isDetailed() )
@@ -133,7 +133,7 @@ public class SubmissionHandler
         for ( Object key : results.keySet() )
           if ( results.get( key ).toString().contains( "StatisticID" ) )
           {
-            logger.info( "saved stat " + results.get( key ).toString() );
+            //logger.info( "saved stat " + results.get( key ).toString() );
             //System.out.println( "saved stat " + results.get( key ).toString() );
             statsIDs.add( results.get( key ).toString().substring( results.get( key ).toString().indexOf( "=" ) + 1,
                                                                    results.get( key ).toString().indexOf( "}" ) ) );
@@ -162,7 +162,7 @@ public class SubmissionHandler
 
   private void submitReferral()
   {
-    logger.info( "handling referral record" );
+    //logger.info( "handling referral record" );
     //System.out.println( "handling referral record" );
     AddRefReferralProc proc;
     List<String> refIDs;
@@ -201,7 +201,7 @@ public class SubmissionHandler
       {
         AddRefStatReferralProc proc;
 
-        logger.info( "handling stat-referral link for stat " + statID + " and referral " + refID );
+        //logger.info( "handling stat-referral link for stat " + statID + " and referral " + refID );
         //System.out.println( "handling stat-referral link for stat " + statID + " and referral " + refID );
 
         proc = new AddRefStatReferralProc();
@@ -226,7 +226,7 @@ public class SubmissionHandler
 
   private void submitInteraction()
   {
-    logger.info( "handling interaction insertion" );
+    //logger.info( "handling interaction insertion" );
     //System.out.println( "handling interaction insertion" );
     AddRefInteractionsProc proc;
     List<String> interactIDs;
@@ -265,7 +265,7 @@ public class SubmissionHandler
       {
         AddRefStatInteractionProc proc;
 
-        logger.info( "handling stat-referral link for stat " + statID + " and interaction " + intID );
+        //logger.info( "handling stat-referral link for stat " + statID + " and interaction " + intID );
         //System.out.println( "handling stat-referral link for stat " + statID + " and interaction " + intID );
 
         proc = new AddRefStatInteractionProc();
