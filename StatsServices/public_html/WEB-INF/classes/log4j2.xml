@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+  <Appenders>
+    <Console name="LogToConsole" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+    <RollingRandomAccessFile name="LogToRollingRandomAccessFile" fileName="/usr/local/pss/webapps/pss/stats.log"
+                             filePattern="/usr/local/pss/webapps/pss/stats-%d{MM-dd-yyyy}-%i.log.gz">
+      <PatternLayout>
+        <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy/>
+        <SizeBasedTriggeringPolicy size="1 MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="10"/>
+    </RollingRandomAccessFile>
+  </Appenders>
+  <Loggers>
+    <Logger name="edu.ucla.library.libservices.ucpath" level="debug" additivity="false">
+      <AppenderRef ref="LogToRollingRandomAccessFile"/>
+      <!--AppenderRef ref="LogToConsole"/-->
+    </Logger>
+    <Logger name="org.springframework.boot" level="error" additivity="false">
+      <AppenderRef ref="LogToConsole"/>
+    </Logger>
+    <Root level="error">
+      <AppenderRef ref="LogToRollingRandomAccessFile"/>
+      <AppenderRef ref="LogToConsole"/>
+    </Root>
+  </Loggers>
+</Configuration>
